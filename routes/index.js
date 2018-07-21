@@ -6,6 +6,9 @@ router.get('/', function(req, res) {
   res.render('index', { title: '聊天室' });
 });
 
+router.get('/room/:id', function(req, res) {
+    res.render('index', { title: '聊天室' });
+});
 
 router.get('/getuser', function(req, res) {
   var data = {

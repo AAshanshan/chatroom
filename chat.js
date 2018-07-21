@@ -28,33 +28,49 @@ Format:[
 	}
 ]
 */
+var roomUser = {};
 
 var userList = [];
+
 //var socketList = [];
 io.on('connection',function(socket){
+    var url = socket.request.headers.referer;
+    var split_arr = url.split('/');
+    var roomid = split_arr[split_arr.length-1] || 'index';
+
 	//login function
 	socket.on('login',function(user){
+
 		user.id = socket.id;
-		userList.push(user);
+		// userList.push(user);
+        if(!roomUser[roomid]) {
+            roomUser[roomid] = [];
+        }
+        roomUser[roomid].push(user);
 		//socketList.push(socket);
 		//send the userlist to all client
-		io.emit('userList',userList);
+
+		// io.emit('userList',roomUser[roomid]);
+        socket.join(roomid);
+        io.to(roomid).emit('userList',roomUser[roomid]);
+        socket.emit('userList',roomUser[roomid]);
+		userList = roomUser[roomid];
 		//send the client information to client
-		socket.emit('userInfo',user);
+		socket.to(roomid).emit('userInfo',user);
 		//send login info to all.
-		socket.broadcast.emit('loginInfo',user.name+"上线了。");
+		socket.to(roomid).broadcast.emit('loginInfo',user.name+"上线了。");
 	});
 
 	//log out
 	socket.on('disconnect',function(){
-		var user = _.findWhere(userList,{id:socket.id});
+		var user = _.findWhere(roomUser[roomid],{id:socket.id});
 		if(user){
-			userList = _.without(userList,user);
+            roomUser[roomid] = _.without(roomUser[roomid],user);
 			//socketList = _.without(socketList,socket);
 			//send the userlist to all client
-			io.emit('userList',userList);
+            io.to(roomid).emit('userList',roomUser[roomid]);
 			//send login info to all.
-			socket.broadcast.emit('loginInfo',user.name+"下线了。");
+            socket.to(roomid).broadcast.emit('loginInfo',user.name+"下线了。");
 		}
 	});
 
@@ -70,7 +86,7 @@ io.on('connection',function(socket){
 				msg:""
 			}
 		*/
-		socket.broadcast.emit('toAll',msgObj);
+        socket.to(roomid).broadcast.emit('toAll',msgObj);
 	});
 	//sendImageToALL
 	socket.on('sendImageToALL',function(msgObj){
@@ -84,7 +100,7 @@ io.on('connection',function(socket){
 				img:""
 			}
 		*/
-		socket.broadcast.emit('sendImageToALL',msgObj);
+        socket.to(roomid).broadcast.emit('sendImageToALL',msgObj);
 	})
 
 
