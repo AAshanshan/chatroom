@@ -6,8 +6,8 @@ body{
 	background-size: cover;
 }
 
-::-moz-selection{background:#4593BC;color:#FFFFFF;}
-::selection {background:#4593BC;color:#FFFFFF;}
+::-moz-selection{background:#5c5b5b;color:#FFFFFF;}
+::selection {background:#5c5b5b;color:#FFFFFF;}
 
 .msg-content{
 	height:500px;
@@ -69,4 +69,33 @@ body{
 .user-content ul li a span{
 	color: #343434;
 	font-size: 13px;
+}
+
+.panel > .panel-heading {
+	background-image: none;
+	background-color: #2e2e2e;
+	color: white;
+
+}
+
+.btn.btn-primary {
+	background-image: none;
+	background-color: #2e2e2e;
+	font-size: 10pt;
+	color: white;
+}
+.container {
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+.panel-heading {
+	width: 100%;
+	text-transform: lowercase;
+	font-size: 10pt;
+	font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+	text-align: center;
+	color: #FFF;
+	line-height: 1.0;
+	font-weight: normal;
 }

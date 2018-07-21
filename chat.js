@@ -124,6 +124,6 @@ io.on('connection',function(socket){
 	});
 });
 
-exports.listen = function(_server){
+exports.listen = function(_server) {
 	io.listen(_server);
 };

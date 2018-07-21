@@ -3,11 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: '聊天室' });
+  res.render('home', { title: 'Chatroom List' });
 });
 
 router.get('/room/:id', function(req, res) {
-    res.render('index', { title: '聊天室' });
+    res.render('index', { title: 'Chatroom List' });
 });
 
 router.get('/getuser', function(req, res) {
