@@ -21,7 +21,7 @@ socket.on('userList',function(userList){
 socket.on('userInfo',function(userObj){
   //should be use cookie or session
 	userSelf = userObj;
-  $('#spanuser').text('欢迎你！'+userObj.name);
+  $('#spanuser').text('Welcome！'+userObj.name);
 });
 
 //review message from toAll
