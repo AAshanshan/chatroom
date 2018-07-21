@@ -6,43 +6,17 @@ block content
     link(rel='stylesheet', href='/css/messenger.css')
     link(rel='stylesheet', href='/css/messenger-theme-flat.css')
 
-
     .container-fluid
         h3
         .row
-                //.msg-list-body.user-content#chatEntries
-                //    ul
-                //        li(style="display:none;")
-                //            a(href="#")
-                //                img.img-thumbnail(src="/images/1.jpg")
-                //                span
-                //.panel.panel-primary(style="margin-right:-10px;")
-                //    .panel-heading
-                //        span.glyphicon.glyphicon-user &nbsp;
-                //        span User List
-                //    .panel-body
-                //        .msg-list-body.user-content
-                //            ul
-                //                li(style="display:none;")
-                //                    a(href="#")
-                //                        img.img-thumbnail(src="/images/1.jpg")
-                //                        span
-                                
-                    .panel-footer
-                    //    .btn-group
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-home
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-user
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-film
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-music
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-heart
-                    //        button.btn.btn-primary(type="button")
-                    //            span.glyphicon.glyphicon-envelope
-            .col-sm-12
+            .col-sm-1
+                .msg-list-body.user-content#chatEntries
+                    ul
+                        li(style="display:none;")
+                            a(href="#")
+                                img.img-thumbnail(src="/images/1.jpg")
+                                span
+            .col-sm-11
                 div.msg-list-body.msg-content#chatEntries
                 div
                     .input-group
